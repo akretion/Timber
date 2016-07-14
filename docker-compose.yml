@@ -1,6 +1,6 @@
 version: '2'
 services:
   wagon:
-    image: akretion/voodoo-ruby:latest
+    build: .
     labels:
       main_service: "True"
