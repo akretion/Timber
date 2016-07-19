@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/akretion/ooor.git
-  revision: de3755b564a256f64c53108b8cfcc11bc1179171
+  revision: 97124fdc86c199c1081cf9dd09e1e7060d6a26fd
   specs:
     ooor (2.3.0)
       activemodel (>= 3.2.0)
