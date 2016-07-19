@@ -3,9 +3,9 @@
   <div class="helper-section">
     <div class="helper-note">
       <span class="helper-icon"></span>
-      <h3>{{ 'collections.onboarding.modal_title' | t }}</h3>
-      <p>{{ 'collections.onboarding.no_products_html' | t }}</p>
-      <p><a href="/admin/products/new" class="admin-btn-primary">{{ 'collections.onboarding.add_product' | t }}</a></p>
+      <h3>{{ 'collections.onboarding.modal_title' | translate }}</h3>
+      <p>{{ 'collections.onboarding.no_products_html' | translate }}</p>
+      <p><a href="/admin/products/new" class="admin-btn-primary">{{ 'collections.onboarding.add_product' | translate }}</a></p>
     </div>
 
     <div class="grid-uniform helper-content">
@@ -22,7 +22,7 @@
             {% capture imageUrl %}//cdn.shopify.com/s/images/themes/product-{{ index }}.png{% endcapture %}
             {{ imageUrl | img_tag }}
           </a>
-          <p class="h6"><a href="/admin/products">{{ 'homepage.onboarding.product_title' | t }}</a></p>
+          <p class="h6"><a href="/admin/products">{{ 'homepage.onboarding.product_title' | translate }}</a></p>
           <p>$19.99</p>
         </div>
         {% assign index = index | plus: 1 %}

@@ -31,7 +31,7 @@
         <h1>{{ article.title }}</h1>
         {% capture author %}<strong>{{ article.author }}</strong>{% endcapture %}
         {% capture date %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}
-        <p>{{ 'blogs.article.author_on_date_html' | t: author: author, date: date }}</p>
+        <p>{{ 'blogs.article.author_on_date_html' | translate: author: author, date: date }}</p>
       </div>
     </header>
 
@@ -54,12 +54,12 @@
       <p class="clearfix">
         {% if blog.previous_article %}
           <span class="left">
-            &larr; {{ 'blogs.article.older_post' | t | link_to: blog.previous_article }}
+            &larr; {{ 'blogs.article.older_post' | translate | link_to: blog.previous_article }}
           </span>
         {% endif %}
         {% if blog.next_article %}
           <span class="right">
-            {{ 'blogs.article.newer_post' | t | link_to: blog.next_article }} &rarr;
+            {{ 'blogs.article.newer_post' | translate | link_to: blog.next_article }} &rarr;
           </span>
         {% endif %}
       </p>
@@ -68,7 +68,7 @@
     {% if blog.comments_enabled? %}
       <hr>
 
-      <h3>{{ 'blogs.comments.with_count' | t: count: number_of_comments }}</h3>
+      <h3>{{ 'blogs.comments.with_count' | translate: count: number_of_comments }}</h3>
 
       <hr>
 
@@ -84,9 +84,9 @@
           {% if comment and comment.created_at %}
             <p class="note form-success">
               {% if blog.moderated? %}
-                {{ 'blogs.comments.success_moderated' | t }}
+                {{ 'blogs.comments.success_moderated' | translate }}
               {% else %}
-                {{ 'blogs.comments.success' | t }}
+                {{ 'blogs.comments.success' | translate }}
               {% endif %}
             </p>
           {% endif %}
@@ -129,32 +129,32 @@
 
           <div class="form-vertical">
             {% form 'new_comment', article %}
-              <h3>{{ 'blogs.comments.title' | t }}</h3>
+              <h3>{{ 'blogs.comments.title' | translate }}</h3>
 
               {{ form.errors | default_errors }}
 
               <div class="grid">
 
                 <div class="grid__item large--one-half">
-                  <label for="CommentAuthor" class="hidden-label">{{ 'blogs.comments.name' | t }}</label>
-                  <input type="text" name="comment[author]" id="CommentAuthor" class="input-full{% if form.errors contains 'author' %} error{% endif %}" placeholder="{{ 'blogs.comments.name' | t }}" value="{{ form.author }}" autocapitalize="words">
+                  <label for="CommentAuthor" class="hidden-label">{{ 'blogs.comments.name' | translate }}</label>
+                  <input type="text" name="comment[author]" id="CommentAuthor" class="input-full{% if form.errors contains 'author' %} error{% endif %}" placeholder="{{ 'blogs.comments.name' | translate }}" value="{{ form.author }}" autocapitalize="words">
 
-                  <label for="CommentEmail" class="hidden-label">{{ 'blogs.comments.email' | t }}</label>
-                  <input type="email" name="comment[email]" id="CommentEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" placeholder="{{ 'blogs.comments.email' | t }}" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+                  <label for="CommentEmail" class="hidden-label">{{ 'blogs.comments.email' | translate }}</label>
+                  <input type="email" name="comment[email]" id="CommentEmail" class="input-full{% if form.errors contains 'email' %} error{% endif %}" placeholder="{{ 'blogs.comments.email' | translate }}" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
                 </div>
 
                 <div class="grid__item large--one-half">
-                  <label for="CommentBody" class="hidden-label">{{ 'blogs.comments.message' | t }}</label>
-                  <textarea name="comment[body]" id="CommentBody" class="input-full{% if form.errors contains 'body' %} error{% endif %}" placeholder="{{ 'blogs.comments.message' | t }}">{{ form.body }}</textarea>
+                  <label for="CommentBody" class="hidden-label">{{ 'blogs.comments.message' | translate }}</label>
+                  <textarea name="comment[body]" id="CommentBody" class="input-full{% if form.errors contains 'body' %} error{% endif %}" placeholder="{{ 'blogs.comments.message' | translate }}">{{ form.body }}</textarea>
                 </div>
 
               </div>
 
               {% if blog.moderated? %}
-                <p>{{ 'blogs.comments.moderated' | t }}</p>
+                <p>{{ 'blogs.comments.moderated' | translate }}</p>
               {% endif %}
 
-              <input type="submit" class="btn" value="{{ 'blogs.comments.post' | t }}">
+              <input type="submit" class="btn" value="{{ 'blogs.comments.post' | translate }}">
             {% endform %}
           </div>
 

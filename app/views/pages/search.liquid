@@ -30,12 +30,12 @@
 
       {% if search.performed %}
         {% if search.results_count == 0 %}
-          <h1 class="text-center">{{ 'general.search.no_results_html' | t: terms: search.terms }}</h1>
+          <h1 class="text-center">{{ 'general.search.no_results_html' | translate: terms: search.terms }}</h1>
         {% else %}
-          <h1 class="text-center">{{ 'general.search.results_for_html' | t: terms: search.terms }}</h1>
+          <h1 class="text-center">{{ 'general.search.results_for_html' | translate: terms: search.terms }}</h1>
         {% endif %}
       {% else %}
-        <h1 class="text-center">{{ 'general.search.title' | t }}</h1>
+        <h1 class="text-center">{{ 'general.search.title' | translate }}</h1>
       {% endif %}
 
       {% include 'search-bar' %}
@@ -92,24 +92,24 @@
                         {% if on_sale %}
                           {% if item.price_varies %}
                             {% assign sale_price = item.price | money %}
-                            {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                            {{ 'products.product.on_sale_from_html' | translate: price: sale_price }}
                           {% else %}
-                            <strong>{{ 'products.product.on_sale' | t }}</strong>
+                            <strong>{{ 'products.product.on_sale' | translate }}</strong>
                             <span itemprop="price">{{ item.price | money }}</span>
                           {% endif %}
                         {% else %}
                           {% if item.price_varies %}
                             {% assign price = item.price | money %}
-                            <span itemprop="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
+                            <span itemprop="price">{{ 'products.general.from_text_html' | translate: price: price }}</span>
                           {% else %}
                             <span itemprop="price">{{ item.price | money }}</span>
                           {% endif %}
                         {% endif %}
                         {% if sold_out %}
-                          <br><strong>{{ 'products.product.sold_out' | t }}</strong>
+                          <br><strong>{{ 'products.product.sold_out' | translate }}</strong>
                         {% endif %}
                         {% if on_sale %}
-                          <br><span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span><s>{{ item.compare_at_price | money }}</s>
+                          <br><span class="visually-hidden">{{ 'products.general.sale_price' | translate }}</span><s>{{ item.compare_at_price | money }}</s>
                         {% endif %}
                       </p>
                     {% endif %}
@@ -139,21 +139,21 @@
                     {% if on_sale %}
                       {% if item.price_varies %}
                         {% assign sale_price = item.price | money %}
-                        {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                        {{ 'products.product.on_sale_from_html' | translate: price: sale_price }}
                       {% else %}
-                        <strong>{{ 'products.product.on_sale' | t }}</strong>
+                        <strong>{{ 'products.product.on_sale' | translate }}</strong>
                         <span itemprop="price">{{ item.price | money }}</span>
                       {% endif %}
                     {% else %}
                       {% if item.price_varies %}
                         {% assign price = item.price | money %}
-                        <span itemprop="price">{{ 'products.general.from_text_html' | t: price: price }}</span>
+                        <span itemprop="price">{{ 'products.general.from_text_html' | translate: price: price }}</span>
                       {% else %}
                         <span itemprop="price">{{ item.price | money }}</span>
                       {% endif %}
                     {% endif %}
                     {% if sold_out %}
-                      <br><strong>{{ 'products.product.sold_out' | t }}</strong>
+                      <br><strong>{{ 'products.product.sold_out' | translate }}</strong>
                     {% endif %}
                     {% if on_sale %}
                       <br><s>{{ item.compare_at_price | money }}</s>

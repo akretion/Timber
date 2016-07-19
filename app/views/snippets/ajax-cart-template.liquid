@@ -77,7 +77,7 @@
 
         {% endraw %}{% if settings.cart_notes_enable %}{% raw %}
           <div>
-            <label for="CartSpecialInstructions">{% endraw %}{{ 'cart.general.note' | t }}{% raw %}</label>
+            <label for="CartSpecialInstructions">{% endraw %}{{ 'cart.general.note' | translate }}{% raw %}</label>
             <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ note }}</textarea>
           </div>
         {% endraw %}{% endif %}{% raw %}
@@ -85,7 +85,7 @@
       <div class="ajaxcart__footer">
         <div class="grid--full">
           <div class="grid__item two-thirds">
-            <p>{% endraw %}{{ 'cart.general.subtotal' | t }}{% raw %}</p>
+            <p>{% endraw %}{{ 'cart.general.subtotal' | translate }}{% raw %}</p>
           </div>
           <div class="grid__item one-third text-right">
             <p>{{{totalPrice}}}</p>
@@ -94,9 +94,9 @@
             <p class="ajaxcart__savings text-center"><em>{{{totalCartDiscount}}}</em></p>
           {{/if}}
         </div>
-        <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | t }}{% raw %}</p>
+        <p class="text-center">{% endraw %}{{ 'cart.general.shipping_at_checkout' | translate }}{% raw %}</p>
         <button type="submit" class="btn--secondary btn--full cart__checkout" name="checkout">
-          {% endraw %}{{ 'cart.general.checkout' | t }}{% raw %} &rarr;
+          {% endraw %}{{ 'cart.general.checkout' | translate }}{% raw %} &rarr;
         </button>
         {% endraw %}{% if additional_checkout_buttons %}
           <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>

@@ -6,14 +6,14 @@
 
 {% endcomment %}
 
-<h1>{{ 'customer.account.title' | t }}</h1>
+<h1>{{ 'customer.account.title' | translate }}</h1>
 
 <hr class="hr--small">
 
 <div class="grid">
 
   <div class="grid__item two-thirds medium-down--one-whole">
-    <h4>{{ 'customer.orders.title' | t }}</h4>
+    <h4>{{ 'customer.orders.title' | translate }}</h4>
 
     {% comment %}
       If we have past orders, loop through each one
@@ -25,11 +25,11 @@
           <table class="full">
             <thead>
               <tr>
-                <th>{{ 'customer.orders.order_number' | t }}</th>
-                <th>{{ 'customer.orders.date' | t }}</th>
-                <th>{{ 'customer.orders.payment_status' | t }}</th>
-                <th>{{ 'customer.orders.fulfillment_status' | t }}</th>
-                <th>{{ 'customer.orders.total' | t }}</th>
+                <th>{{ 'customer.orders.order_number' | translate }}</th>
+                <th>{{ 'customer.orders.date' | translate }}</th>
+                <th>{{ 'customer.orders.payment_status' | translate }}</th>
+                <th>{{ 'customer.orders.fulfillment_status' | translate }}</th>
+                <th>{{ 'customer.orders.total' | translate }}</th>
               </tr>
             </thead>
             <tbody>
@@ -48,7 +48,7 @@
 
       {% else %}
 
-        <p>{{ 'customer.orders.none' | t }}</p>
+        <p>{{ 'customer.orders.none' | translate }}</p>
 
       {% endif %}
       {% if paginate.pages > 1 %}
@@ -61,7 +61,7 @@
   </div>
 
   <div class="grid__item one-third medium-down--one-whole">
-    <h4>{{ 'customer.account.details' | t }}</h4>
+    <h4>{{ 'customer.account.details' | translate }}</h4>
 
     <h5>{{ customer.name }}</h5>
 
@@ -96,7 +96,7 @@
 
     {% endif %}
 
-    <p><a href="/account/addresses">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+    <p><a href="/account/addresses">{{ 'customer.account.view_addresses' | translate }} ({{ customer.addresses_count }})</a></p>
   </div>
 
 </div>

@@ -38,7 +38,7 @@
         <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
         {% capture author %}<strong>{{ article.author }}</strong>{% endcapture %}
         {% capture date %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: format: 'month_day_year' }}</time>{% endcapture %}
-        <p>{{ 'blogs.article.author_on_date_html' | t: author: author, date: date }}</p>
+        <p>{{ 'blogs.article.author_on_date_html' | translate: author: author, date: date }}</p>
 
         {% if article.image %}
           <a class="article__featured-image" href="{{ article.url }}">
@@ -65,7 +65,7 @@
           {% if blog.comments_enabled? %}
           <li>
             <a href="{{ article.url }}#comments">
-              {{ 'blogs.comments.with_count' | t: count: article.comments_count }}
+              {{ 'blogs.comments.with_count' | translate: count: article.comments_count }}
             </a>
           </li>
           {% endif %}
@@ -73,7 +73,7 @@
           {% include 'tags-article' %}
         </ul>
 
-        <p><a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }} &rarr;</a></p>
+        <p><a href="{{ article.url }}">{{ 'blogs.article.read_more' | translate }} &rarr;</a></p>
 
       </div>
 

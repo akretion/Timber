@@ -84,29 +84,29 @@
 
               {% else %}
                 <option disabled="disabled">
-                  {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                  {{ variant.title }} - {{ 'products.product.sold_out' | translate }}
                 </option>
               {% endif %}
             {% endfor %}
           </select>
 
-          <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+          <span class="visually-hidden">{{ 'products.general.regular_price' | translate }}</span>
           <span id="ProductPrice" class="h2" itemprop="price" content="{{ current_variant.price | divided_by: 100 }}">
             {{ current_variant.price | money }}
           </span>
 
           {% if product.compare_at_price_max > product.price %}
-            <span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+            <span class="visually-hidden">{{ 'products.general.sale_price' | translate }}</span>
             <p id="ComparePrice">
-              {{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
+              {{ 'products.product.compare_at' | translate }} {{ current_variant.compare_at_price | money }}
             </p>
           {% endif %}
 
-          <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+          <label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | translate }}</label>
           <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
 
           <button type="submit" name="add" id="AddToCart" class="btn">
-            <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+            <span id="AddToCartText">{{ 'products.product.add_to_cart' | translate }}</span>
           </button>
         </form>
 
@@ -125,12 +125,12 @@
           <p>
             {% if collection.previous_product %}
               <span class="left">
-                {{ 'products.general.previous_product_html' | t | link_to: collection.previous_product }}
+                {{ 'products.general.previous_product_html' | translate | link_to: collection.previous_product }}
               </span>
             {% endif %}
             {% if collection.next_product %}
               <span class="right">
-                {{ 'products.general.next_product_html' | t | link_to: collection.next_product }}
+                {{ 'products.general.next_product_html' | translate | link_to: collection.next_product }}
               </span>
             {% endif %}
           </p>
@@ -157,7 +157,7 @@
       addons can override it.
       * E.g. multiple currencies http://docs.shopify.com/manual/configuration/store-customization/currencies-and-translations/currencies/how-to-toggle-between-two-currencies
 {% endcomment %}
-{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+{{ 'option_selection.js' | shopify_asset_url | javascript_tag }}
 <script>
   var selectCallback = function(variant, selector) {
     timber.productPage({

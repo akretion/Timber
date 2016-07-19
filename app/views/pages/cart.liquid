@@ -9,19 +9,19 @@
 
 {% if cart.item_count > 0 %}
 
-  <h1>{{ 'cart.general.title' | t }}</h1>
+  <h1>{{ 'cart.general.title' | translate }}</h1>
   <form action="/cart" method="post" novalidate class="cart table-wrap">
     <table class="cart-table full table--responsive">
       <thead class="cart__row cart__header-labels">
-        <th colspan="2" class="text-center">{{ 'cart.label.product' | t }}</th>
-        <th class="text-center">{{ 'cart.label.price' | t }}</th>
-        <th class="text-center">{{ 'cart.label.quantity' | t }}</th>
-        <th class="text-right">{{ 'cart.label.total' | t }}</th>
+        <th colspan="2" class="text-center">{{ 'cart.label.product' | translate }}</th>
+        <th class="text-center">{{ 'cart.label.price' | translate }}</th>
+        <th class="text-center">{{ 'cart.label.quantity' | translate }}</th>
+        <th class="text-right">{{ 'cart.label.total' | translate }}</th>
       </thead>
       <tbody>
         {% for item in cart.items %}
           <tr class="cart__row table__section">
-            <td data-label="{{ 'customer.order.product' | t }}">
+            <td data-label="{{ 'customer.order.product' | translate }}">
               <a href="{{ item.url | within: collections.all }}" class="cart__image">
                 {% comment %}
                   More image size options at:
@@ -70,18 +70,18 @@
               {% endif %}
 
               <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove">
-                <small>{{ 'cart.general.remove' | t }}</small>
+                <small>{{ 'cart.general.remove' | translate }}</small>
               </a>
             </td>
-            <td data-label="{{ 'cart.label.price' | t }}">
+            <td data-label="{{ 'cart.label.price' | translate }}">
               <span class="h3">
                 {{ item.price | money }}
               </span>
             </td>
-            <td data-label="{{ 'cart.label.quantity' | t }}">
+            <td data-label="{{ 'cart.label.quantity' | translate }}">
               <input type="number" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" min="0">
             </td>
-            <td data-label="{{ 'cart.label.total' | t }}" class="text-right">
+            <td data-label="{{ 'cart.label.total' | translate }}" class="text-right">
               {% if item.original_line_price != item.line_price %}
                 <span class="cart-item__original-price"><s>{{ item.original_line_price | money }}</s></span>
               {% endif %}
@@ -99,24 +99,24 @@
     <div class="grid cart__row">
       {% if settings.cart_notes_enable %}
         <div class="grid__item two-thirds small--one-whole">
-          <label for="CartSpecialInstructions">{{ 'cart.general.note' | t }}</label>
+          <label for="CartSpecialInstructions">{{ 'cart.general.note' | translate }}</label>
           <textarea name="note" class="input-full" id="CartSpecialInstructions">{{ cart.note }}</textarea>
         </div>
       {% endif %}
       <div class="grid__item text-right{% if settings.cart_notes_enable %} one-third small--one-whole{% endif %}">
         <p>
-          <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | t }}</span>
+          <span class="cart__subtotal-title">{{ 'cart.general.subtotal' | translate }}</span>
           <span class="h3 cart__subtotal">{{ cart.total_price | money }}</span>
         </p>
         {% if cart.total_discounts > 0 %}
           {% assign savings = cart.total_discounts | money %}
           <p>
-            <span class="cart-subtotal__savings"><em>{{ 'cart.general.savings_html' | t: price: savings }}</em></span>  
+            <span class="cart-subtotal__savings"><em>{{ 'cart.general.savings_html' | translate: price: savings }}</em></span>  
           </p>
         {% endif %}  
-        <p><em>{{ 'cart.general.shipping_at_checkout' | t }}</em></p>
-        <input type="submit" name="update" class="btn--secondary update-cart" value="{{ 'cart.general.update' | t }}">
-        <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | t }}">
+        <p><em>{{ 'cart.general.shipping_at_checkout' | translate }}</em></p>
+        <input type="submit" name="update" class="btn--secondary update-cart" value="{{ 'cart.general.update' | translate }}">
+        <input type="submit" name="checkout" class="btn" value="{{ 'cart.general.checkout' | translate }}">
       </div>
     </div>
   </form>
@@ -124,7 +124,7 @@
   {% comment %}
     The cart is empty
   {% endcomment %}
-  <h2>{{ 'cart.general.title' | t }}</h2>
-  <p>{{ 'cart.general.empty' | t }}</p>
-  <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
+  <h2>{{ 'cart.general.title' | translate }}</h2>
+  <p>{{ 'cart.general.empty' | translate }}</p>
+  <p>{{ 'cart.general.continue_browsing_html' | translate }}</p>
 {% endif %}

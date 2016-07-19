@@ -14,7 +14,7 @@
   Product tags in the current collection
 {% endcomment %}
 {% if collection.all_tags.size > 0 %}
-  <h3>{{ 'collections.sidebar.tags' | t }}</h3>
+  <h3>{{ 'collections.sidebar.tags' | translate }}</h3>
 
   {% comment %}
     To provide a 'catch-all' link at the top of the list,
@@ -28,7 +28,7 @@
       {% endcomment %}
       {% if collection.handle %}
         <a href="/collections/{{ collection.handle }}">
-          {{ 'collections.general.all_of_collection' | t: collection: collection.title }}
+          {{ 'collections.general.all_of_collection' | translate: collection: collection.title }}
         </a>
 
       {% comment %}
@@ -36,7 +36,7 @@
       {% endcomment %}
       {% elsif collection.current_type %}
         <a href="{{ collection.current_type | url_for_type }}">
-          {{ 'collections.general.all_of_collection' | t: collection: collection.title }}
+          {{ 'collections.general.all_of_collection' | translate: collection: collection.title }}
         </a>
 
       {% comment %}
@@ -44,7 +44,7 @@
       {% endcomment %}
       {% elsif collection.current_vendor %}
         <a href="{{ collection.current_vendor | url_for_vendor }}">
-          {{ 'collections.general.all_of_collection' | t: collection: collection.title }}
+          {{ 'collections.general.all_of_collection' | translate: collection: collection.title }}
         </a>
       {% endif %}
     </li>

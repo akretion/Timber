@@ -14,7 +14,7 @@
 
   <!-- Title and description ================================================== -->
   <title>
-  {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | translate: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | translate: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
   </title>
 
   {% if page_description %}
@@ -34,14 +34,14 @@
   {{ content_for_header }}
   {% include 'oldie-js' %}
 
-  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
-  {{ 'modernizr.min.js' | asset_url | script_tag }}
+  {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | javascript_tag }}
+  {{ 'modernizr.min.js' | asset_url | javascript_tag }}
 
   {% comment %}
     If you store has customer accounts disabled, you can remove the following JS file
   {% endcomment %}
   {% if template contains 'customers' %}
-    {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    {{ 'shopify_common.js' | shopify_asset_url | javascript_tag }}
   {% endif %}
 
 </head>
@@ -53,11 +53,11 @@
 
   <div id="NavDrawer" class="drawer drawer--left">
     <div class="drawer__header">
-      <div class="drawer__title h3">{{ 'layout.drawers.browse' | t }}</div>
+      <div class="drawer__title h3">{{ 'layout.drawers.browse' | translate }}</div>
       <div class="drawer__close js-drawer-close">
         <button type="button" class="icon-fallback-text">
           <span class="icon icon-x" aria-hidden="true"></span>
-          <span class="fallback-text">{{ 'layout.drawers.close_menu' | t }}</span>
+          <span class="fallback-text">{{ 'layout.drawers.close_menu' | translate }}</span>
         </button>
       </div>
     </div>
@@ -85,7 +85,7 @@
                 </button>
                 <button type="button" class="icon-fallback-text mobile-nav__toggle-close">
                   <span class="icon icon-minus" aria-hidden="true"></span>
-                  <span class="fallback-text">{{ 'cart.general.close_cart' | t | json }}</span>
+                  <span class="fallback-text">{{ 'cart.general.close_cart' | translate | json }}</span>
                 </button>
               </div>
             </div>
@@ -112,20 +112,20 @@
           <li class="mobile-nav__item">
             {% if customer.first_name != blank %}
               {% capture first_name %}{{ customer.first_name }}{% endcapture %}
-              <a href="/account">{{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}</a>
+              <a href="/account">{{ 'layout.customer.logged_in_as_html' | translate: first_name: first_name }}</a>
             {% else %}
-              <a href="/account">{{ 'layout.customer.account' | t }}</a>
+              <a href="/account">{{ 'layout.customer.account' | translate }}</a>
             {% endif %}
           </li>
           <li class="mobile-nav__item">
-            {{ 'layout.customer.log_out' | t | customer_logout_link }}
+            {{ 'layout.customer.log_out' | translate | customer_logout_link }}
           </li>
         {% else %}
           <li class="mobile-nav__item">
-            {{ 'layout.customer.log_in' | t | customer_login_link }}
+            {{ 'layout.customer.log_in' | translate | customer_login_link }}
           </li>
           <li class="mobile-nav__item">
-            {{ 'layout.customer.create_account' | t | customer_register_link }}
+            {{ 'layout.customer.create_account' | translate | customer_register_link }}
           </li>
         {% endif %}
       {% endif %}
@@ -135,11 +135,11 @@
   {% if settings.ajax_cart_method == "drawer" %}
     <div id="CartDrawer" class="drawer drawer--right">
       <div class="drawer__header">
-        <div class="drawer__title h3">{{ 'cart.general.title' | t }}</div>
+        <div class="drawer__title h3">{{ 'cart.general.title' | translate }}</div>
         <div class="drawer__close js-drawer-close">
           <button type="button" class="icon-fallback-text">
             <span class="icon icon-x" aria-hidden="true"></span>
-            <span class="fallback-text">{{ 'cart.general.close_cart' | t | json }}</span>
+            <span class="fallback-text">{{ 'cart.general.close_cart' | translate | json }}</span>
           </button>
         </div>
       </div>
@@ -186,9 +186,9 @@
             <div>
               <a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
                 <span class="icon icon-cart" aria-hidden="true"></span>
-                {{ 'layout.cart.title' | t }}
+                {{ 'layout.cart.title' | translate }}
                 (<span id="CartCount">{{ cart.item_count }}</span>
-                {{ 'layout.cart.items_count' | t: count: cart.item_count }}
+                {{ 'layout.cart.items_count' | translate: count: cart.item_count }}
                 <span id="CartCost">{{ cart.total_price | money }}</span>)
               </a>
             </div>
@@ -201,14 +201,14 @@
                 {% if customer %}
                   {% if customer.first_name != blank %}
                     {% capture first_name %}<a href="/account">{{ customer.first_name }}</a>{% endcapture %}
-                    {{ 'layout.customer.logged_in_as_html' | t: first_name: first_name }}
+                    {{ 'layout.customer.logged_in_as_html' | translate: first_name: first_name }}
                   {% else %}
-                    <a href="/account">{{ 'layout.customer.account' | t }}</a>
+                    <a href="/account">{{ 'layout.customer.account' | translate }}</a>
                   {% endif %}
-                  | {{ 'layout.customer.log_out' | t | customer_logout_link }}
+                  | {{ 'layout.customer.log_out' | translate | customer_logout_link }}
                 {% else %}
-                  {{ 'layout.customer.log_in' | t | customer_login_link }}
-                  | {{ 'layout.customer.create_account' | t | customer_register_link }}
+                  {{ 'layout.customer.log_in' | translate | customer_login_link }}
+                  | {{ 'layout.customer.create_account' | translate | customer_register_link }}
                 {% endif %}
               </div>
             {% endif %}
@@ -270,7 +270,7 @@
               <div class="site-nav--mobile">
                 <button type="button" class="icon-fallback-text site-nav__link js-drawer-open-left" aria-controls="NavDrawer" aria-expanded="false">
                   <span class="icon icon-hamburger" aria-hidden="true"></span>
-                  <span class="fallback-text">{{ 'layout.navigation.menu' | t }}</span>
+                  <span class="fallback-text">{{ 'layout.navigation.menu' | translate }}</span>
                 </button>
               </div>
             </div>
@@ -279,7 +279,7 @@
                 <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
                   <span class="icon-fallback-text">
                     <span class="icon icon-cart" aria-hidden="true"></span>
-                    <span class="fallback-text">{{ 'layout.cart.title' | t }}</span>
+                    <span class="fallback-text">{{ 'layout.cart.title' | translate }}</span>
                   </span>
                 </a>
               </div>
@@ -301,7 +301,7 @@
         <div class="grid">
           {% if settings.footer_social_enable %}
             <div class="grid__item large--one-third medium--one-half">
-              <h3>{{ 'layout.footer.social_title' | t }}</h3>
+              <h3>{{ 'layout.footer.social_title' | translate }}</h3>
                 <ul class="inline-list social-icons">
                   {% if settings.social_twitter_link != blank %}
                     <li>
@@ -335,12 +335,12 @@
                 MailChimp newsletter integration and requirement:
                  - http://docs.shopify.com/support/configuration/store-customization/where-do-i-get-my-mailchimp-form-action
               {% endcomment %}
-              <h3>{{ 'layout.footer.newsletter_title' | t }}</h3>
+              <h3>{{ 'layout.footer.newsletter_title' | translate }}</h3>
               {% if settings.newsletter_form_action != blank %}
                 <form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
-                  <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+                  <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | translate }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | translate }}" autocorrect="off" autocapitalize="off">
                   <span class="input-group-btn">
-                    <input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
+                    <input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | translate }}">
                   </span>
                 </form>
               {% else %}
@@ -348,13 +348,13 @@
                 {% form 'customer' %}
                   {{ form.errors | default_errors }}
                   {% if form.posted_successfully? %}
-                    <p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+                    <p class="note form-success">{{ 'general.newsletter_form.confirmation' | translate }}</p>
                   {% else %}
                     <div class="input-group">
-                      <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+                      <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | translate }}" name="contact[email]" id="Email" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | translate }}" autocorrect="off" autocapitalize="off">
                       <input type="hidden" name="contact[tags]" value="newsletter">
                       <span class="input-group-btn">
-                        <input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
+                        <input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | translate }}">
                       </span>
                     </div>
                   {% endif %}
@@ -371,7 +371,7 @@
             {% endcomment %}
             {% unless shop.enabled_payment_types == empty %}
               {% assign payment_icons_available = 'amazon_payments,american_express,bitcoin,cirrus,dankort,diners_club,discover,dogecoin,dwolla,forbrugsforeningen,interac,jcb,litecoin,maestro,master,paypal,stripe,visa' | split: ',' %}
-              <h4 class="text-center">{{ 'layout.footer.accepted_payments' | t }}</h4>
+              <h4 class="text-center">{{ 'layout.footer.accepted_payments' | translate }}</h4>
               <ul class="inline-list payment-icons">
                 {% for type in shop.enabled_payment_types %}
                   {% if payment_icons_available contains type %}
@@ -394,8 +394,8 @@
     <!-- //site-footer -->
   </div>
 
-  {{ 'fastclick.min.js' | asset_url | script_tag }}
-  {{ 'timber.js' | asset_url | script_tag }}
+  {{ 'fastclick.min.js' | asset_url | javascript_tag }}
+  {{ 'timber.js' | asset_url | javascript_tag }}
 
   {% comment %}
     Template-specific js
@@ -414,9 +414,9 @@
       - http://shopify.com/timber#ajax-cart
   {% endcomment %}
   {% if settings.ajax_cart_method == "drawer" %}
-    {{ 'handlebars.min.js' | asset_url | script_tag }}
+    {{ 'handlebars.min.js' | asset_url | javascript_tag }}
     {% include 'ajax-cart-template' %}
-    {{ 'ajax-cart.js' | asset_url | script_tag }}
+    {{ 'ajax-cart.js' | asset_url | javascript_tag }}
     <script>
       jQuery(function($) {
         ajaxCart.init({

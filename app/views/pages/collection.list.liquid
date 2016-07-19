@@ -110,24 +110,24 @@
                   {% if on_sale %}
                     {% if product.price_varies %}
                       {% assign sale_price = product.price | money %}
-                      {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+                      {{ 'products.product.on_sale_from_html' | translate: price: sale_price }}
                     {% else %}
-                      <strong>{{ 'products.product.on_sale' | t }}</strong>
+                      <strong>{{ 'products.product.on_sale' | translate }}</strong>
                       {{ product.price | money }}
                     {% endif %}
                   {% else %}
                     {% if product.price_varies %}
                       {% assign price = product.price | money %}
-                      {{ 'products.general.from_text_html' | t: price: price }}
+                      {{ 'products.general.from_text_html' | translate: price: price }}
                     {% else %}
                       {{ product.price | money }}
                     {% endif %}
                   {% endif %}
                   {% if sold_out %}
-                    <br><strong>{{ 'products.product.sold_out' | t }}</strong>
+                    <br><strong>{{ 'products.product.sold_out' | translate }}</strong>
                   {% endif %}
                   {% if on_sale %}
-                    <br><span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span><s>{{ product.compare_at_price | money }}</s>
+                    <br><span class="visually-hidden">{{ 'products.general.regular_price' | translate }}</span><s>{{ product.compare_at_price | money }}</s>
                   {% endif %}
                 </div>
               </div>
@@ -138,7 +138,7 @@
       {% else %}
 
         <div class="grid__item">
-          <p>{{ 'collections.general.no_matches' | t }}</p>
+          <p>{{ 'collections.general.no_matches' | translate }}</p>
         </div>
 
       {% endfor %}
