@@ -45,3 +45,6 @@ grunt-config.json
 config.yml
 /_site
 assets/logo.png
+bundle
+dev.docker-compose.yml
+

@@ -1,0 +1,18 @@
+
+mkdir -p app/views
+git mv snippets app/views/
+git mv templates app/views/pages
+git mv layout/theme.liquid app/views/pages
+git mv assets public
+git mv public/*.liquid app/views/snippets/
+git mv app/views/snippets/oldIE-js.liquid app/views/snippets/oldie-js.liquid
+rmdir layout
+git rm -rf spec
+git rm config-sample.yml bower.json circle.yml repodb.yml README.md
+mkdir app/content_types
+mkdir data
+find ./ -path ./.git -prune -o -type f -readable -writable -exec sed -i "s/javascript_tag/javajavascript_tag/g" {} \;
+find ./ -path ./.git -prune -o -type f -readable -writable -exec sed -i "s/| translate:/| translate:/g" {} \;
+find ./ -path ./.git -prune -o -type f -readable -writable -exec sed -i "s/| translate /| translate /g" {} \;
+
+
