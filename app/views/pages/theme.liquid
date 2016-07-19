@@ -32,7 +32,7 @@
 
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
-  {% include 'oldIE-js' %}
+  {% include 'oldie-js' %}
 
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
   {{ 'modernizr.min.js' | asset_url | script_tag }}
@@ -344,6 +344,7 @@
                   </span>
                 </form>
               {% else %}
+              {% comment %}
                 {% form 'customer' %}
                   {{ form.errors | default_errors }}
                   {% if form.posted_successfully? %}
@@ -358,6 +359,7 @@
                     </div>
                   {% endif %}
                 {% endform %}
+              {% endcomment %}
               {% endif %}
 
             </div>
