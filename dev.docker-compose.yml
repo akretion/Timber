@@ -1,0 +1,11 @@
+services:
+  wagon:
+    extends:
+      file: docker-compose.yml
+      service: wagon
+    ports:
+    - 5333:3333
+    volumes:
+    - .:/workspace
+    - /home/hermes/.voodoo/shared:/home/hermes/.voodoo/shared
+version: '2'
