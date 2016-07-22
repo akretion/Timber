@@ -1,3 +1,5 @@
+{% extends theme %}
+{% block 'content' %}
 <!-- /templates/customers/register.liquid -->
 
 <div class="grid">
@@ -28,9 +30,10 @@
         </p>
         <a href="{{ shop.url }}">{{ 'customer.register.cancel' | translate }}</a>
 
-      {% endform %}
+      {% endform %} {% endcomment %}
     </div>
 
   </div>
 
 </div>
+{% endblock %}

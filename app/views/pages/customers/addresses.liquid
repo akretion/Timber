@@ -1,3 +1,5 @@
+{% extends theme %}
+{% block 'content' %}
 <!-- /templates/customers/addressess.liquid -->
 {% comment %}
 
@@ -93,7 +95,7 @@
         <p><a href="#" onclick="Shopify.CustomerAddress.toggleNewForm(); return false;">{{ 'customer.addresses.cancel' | translate }}</a></p>
 
         <hr>
-      {% endform %}
+      {% endform %} {% endcomment %}
     </div>
 
     <h2>{{ 'customer.addresses.title' | translate }}</h2>
@@ -183,7 +185,7 @@
           <p><a href="#" onclick="Shopify.CustomerAddress.toggleForm({{ form.id }}); return false;">{{ 'customer.addresses.cancel' | translate }}</a></p>
 
           <hr>
-        {% endform %}
+        {% endform %} {% endcomment %}
       </div>
 
     {% endfor %}
@@ -236,3 +238,4 @@
 </script>
 
 {% endpaginate %}
+{% endblock %}

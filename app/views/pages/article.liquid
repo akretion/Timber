@@ -1,3 +1,5 @@
+{% extends theme %}
+{% block 'content' %}
 <!-- /templates/article.liquid -->
 {% comment %}
 
@@ -155,7 +157,7 @@
               {% endif %}
 
               <input type="submit" class="btn" value="{{ 'blogs.comments.post' | translate }}">
-            {% endform %}
+            {% endform %} {% endcomment %}
           </div>
 
         </div>
@@ -168,3 +170,4 @@
     {% include 'blog-sidebar' %}
   </aside>
 </div>
+{% endblock %}

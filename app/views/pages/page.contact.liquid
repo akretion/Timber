@@ -1,3 +1,5 @@
+{% extends theme %}
+{% block 'content' %}
 <!-- /templates/page.contact.liquid -->
 {% comment %}
 
@@ -55,9 +57,10 @@
 
         <input type="submit" class="btn right" value="{{ 'contact.form.send' | translate }}">
 
-      {% endform %}
+      {% endform %} {% endcomment %}
     </div>
 
   </div>
 
 </div>
+{% endblock %}

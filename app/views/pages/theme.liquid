@@ -1,3 +1,5 @@
+{% extends theme %}
+{% block 'content' %}
 <!doctype html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
@@ -28,14 +30,14 @@
   <meta name="theme-color" content="#747474">
 
   <!-- CSS ================================================== -->
-  {{ 'timber.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'timber.css' | stylesheet_tag }}
 
   <!-- Header hook for plugins ================================================== -->
   {{ content_for_header }}
-  {% include 'oldIE-js' %}
+  {% include 'oldie-js' %}
 
   {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | javascript_tag }}
-  {{ 'modernizr.min.js' | asset_url | javascript_tag }}
+  {{ 'modernizr.min.js' | javascript_tag }}
 
   {% comment %}
     If you store has customer accounts disabled, you can remove the following JS file
@@ -344,7 +346,7 @@
                   </span>
                 </form>
               {% else %}
-                {% form 'customer' %}
+                {% comment %}{% form 'customer' %}
                   {{ form.errors | default_errors }}
                   {% if form.posted_successfully? %}
                     <p class="note form-success">{{ 'general.newsletter_form.confirmation' | translate }}</p>
@@ -357,7 +359,7 @@
                       </span>
                     </div>
                   {% endif %}
-                {% endform %}
+                {% endform %} {% endcomment %}
               {% endif %}
 
             </div>
@@ -392,8 +394,8 @@
     <!-- //site-footer -->
   </div>
 
-  {{ 'fastclick.min.js' | asset_url | javascript_tag }}
-  {{ 'timber.js' | asset_url | javascript_tag }}
+  {{ 'fastclick.min.js' | javascript_tag }}
+  {{ 'timber.js' | javascript_tag }}
 
   {% comment %}
     Template-specific js
@@ -412,9 +414,9 @@
       - http://shopify.com/timber#ajax-cart
   {% endcomment %}
   {% if settings.ajax_cart_method == "drawer" %}
-    {{ 'handlebars.min.js' | asset_url | javascript_tag }}
+    {{ 'handlebars.min.js' | javascript_tag }}
     {% include 'ajax-cart-template' %}
-    {{ 'ajax-cart.js' | asset_url | javascript_tag }}
+    {{ 'ajax-cart.js' | javascript_tag }}
     <script>
       jQuery(function($) {
         ajaxCart.init({
@@ -436,3 +438,4 @@
 
 </body>
 </html>
+{% endblock %}

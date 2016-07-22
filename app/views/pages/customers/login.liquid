@@ -1,3 +1,5 @@
+{% extends theme %}
+{% block 'content' %}
 <!-- /templates/customers/login.liquid -->
 
 <div class="grid">
@@ -37,7 +39,7 @@
           <p><a href="#recover" id="RecoverPassword">{{ 'customer.login.forgot_password' | translate }}</a></p>
         {% endif %}
 
-      {% endform %}
+      {% endform %} {% endcomment %}
     </div>
 
     {% comment %}
@@ -67,7 +69,7 @@
             <input type="submit" class="btn btn--full" value="{{ 'customer.recover_password.submit' | translate }}">
           </p>
           <button type="button" id="HideRecoverPasswordLink" class="text-link">{{ 'customer.recover_password.cancel' | translate }}</button>
-        {% endform %}
+        {% endform %} {% endcomment %}
       </div>
 
     </div>
@@ -83,9 +85,10 @@
 
       {% form 'guest_login' %}
         <input type="submit" class="btn" value="{{ 'customer.login.guest_continue' | translate }}">
-      {% endform %}
+      {% endform %} {% endcomment %}
     {% endif %}
 
   </div>
 
 </div>
+{% endblock %}

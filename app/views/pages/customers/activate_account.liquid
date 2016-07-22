@@ -1,3 +1,5 @@
+{% extends theme %}
+{% block 'content' %}
 <!-- /templates/customers/activate_account.liquid -->
 
 <div class="grid">
@@ -22,8 +24,9 @@
 
         <input type="submit" class="btn btn--full" value="{{ 'customer.activate_account.submit' | translate }}">
         <input type="submit" class="btn--secondary btn--full" name="decline" value="{{ 'customer.activate_account.cancel' | translate }}">
-      {% endform %}
+      {% endform %} {% endcomment %}
     </div>
 
   </div>
 </div>
+{% endblock %}

@@ -1,3 +1,5 @@
+{% extends theme %}
+{% block 'content' %}
 <!-- /templates/cart.liquid -->
 {% comment %}
 
@@ -127,4 +129,4 @@
   <h2>{{ 'cart.general.title' | translate }}</h2>
   <p>{{ 'cart.general.empty' | translate }}</p>
   <p>{{ 'cart.general.continue_browsing_html' | translate }}</p>
-{% endif %}
+{% endif %}{% endblock %}
