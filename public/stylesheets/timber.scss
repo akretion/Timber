@@ -2401,7 +2401,6 @@ label.error {
 /*============================================================================
   #Ajax Cart Styles (conditionally loaded)
 ==============================================================================*/
-{% if settings.ajax_cart_method == "drawer" %}
 
 .ajaxcart__inner {
   margin-bottom: $gutter;
